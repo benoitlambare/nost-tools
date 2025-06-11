@@ -62,9 +62,7 @@ class ManagedApplication(Application):
         """
         if self.config and self.config.rc.yaml_file:
             try:
-                parameters = (
-                    self.config.rc.simulation_configuration.execution_parameters.managed_applications
-                )
+                parameters = self.config.rc.simulation_configuration.execution_parameters.managed_applications
                 try:
                     # Try to get app-specific parameters
                     return parameters[self.app_name]
@@ -100,9 +98,36 @@ class ManagedApplication(Application):
             time_step (:obj:`timedelta`): scenario time step used in execution (Default: 1 second)
             manager_app_name (str): manager application name (Default: manager)
         """
-        self.config = config
+        if (
+            set_offset is not None
+            and time_status_step is not None
+            and time_status_init is not None
+            and shut_down_when_terminated is not None
+            and time_step is not None
+            and manager_app_name is not None
+        ):
+            self.set_offset = set_offset
+            self.time_status_step = time_status_step
+            self.time_status_init = time_status_init
+            self.shut_down_when_terminated = shut_down_when_terminated
+            self.time_step = time_step
+            self.manager_app_name = manager_app_name
+        else:
+            self.config = config
+            parameters = self.config.rc.simulation_configuration.execution_parameters.managed_applications
 
-        # Call base start_up to handle common parameters
+            try:
+                parameters = parameters[self.app_name]
+            except KeyError:
+                parameters = parameters["default"]
+            self.set_offset = parameters.set_offset
+            self.time_status_step = parameters.time_status_step
+            self.time_status_init = parameters.time_status_init
+            self.shut_down_when_terminated = parameters.shut_down_when_terminated
+            self.time_step = parameters.time_step
+            self.manager_app_name = parameters.manager_app_name
+
+        # start up base application
         super().start_up(
             prefix,
             config,
@@ -195,7 +220,6 @@ class ManagedApplication(Application):
         params = StartCommand.model_validate_json(message).tasking_parameters
         logger.info(f"Received start command {params}")
         try:
-
             # check for optional start time
             if params.sim_start_time is not None:
                 self._sim_start_time = params.sim_start_time
