@@ -63,13 +63,75 @@ execution:
       shut_down_when_terminated: True
       manager_app_name: "manager"
       configuration_parameters:
-        FIELD_OF_REGARD:
-          - 110
-          - 110
-          - 112.56
-          - 112.56
-          - 20.6
-          - 20.6
+        SATELLITES:
+          - name: Sentinel-1A
+            norad_id: 39634
+            field_of_regard: 32
+
+          - name: Sentinel-1C
+            norad_id: 62261
+            field_of_regard: 32
+
+          - name: Sentinel-2A
+            norad_id: 40697
+            field_of_regard: 20.6
+
+          - name: Sentinel-2B
+            norad_id: 42063
+            field_of_regard: 20.6
+
+          - name: Sentinel-2C
+            norad_id: 60989
+            field_of_regard: 20.6
+
+          - name: Sentinel-3A
+            norad_id: 41335
+            field_of_regard: 68.5
+
+          - name: Sentinel-3B
+            norad_id: 43437
+            field_of_regard: 68.5
+
+          - name: Sentinel-5P
+            norad_id: 42969
+            field_of_regard: 108
+
+          - name: SKYBEE-A01
+            norad_id: 62671
+            field_of_regard: 90
+
+          - name: DEIMOS-2
+            norad_id: 40013
+            field_of_regard: 1.2
+
+          - name: YAM-6
+            norad_id: 59126
+            field_of_regard: 90
+
+          - name: ICEYE-X8
+            norad_id: 47510
+            field_of_regard: 90
+
+          - name: ICEYE-X15
+            norad_id: 48917
+            field_of_regard: 90
+
+          - name: ICEYE-X36
+            norad_id: 59103
+            field_of_regard: 90
+
+          - name: ICEYE-X38
+            norad_id: 59100
+            field_of_regard: 90
+
+          - name: ICEYE-X43
+            norad_id: 60539
+            field_of_regard: 90
+
+          - name: ICEYE-X45
+            norad_id: 62705
+            field_of_regard: 90
+
     ground:
       time_scale_factor: 60
       time_step: "0:00:01"
@@ -81,9 +143,95 @@ execution:
       shut_down_when_terminated: True
       manager_app_name: "manager"
       configuration_parameters:
-        stations:
-          - groundId: 0
-            latitude: 78.229772
-            longitude: 15.407786
-            elevAngle: 5.0
-            operational: true
+        providers:
+          - name: "KSAT"
+            stations:
+              - groundId: 0
+                latitude: -72.010000
+                longitude: 2.320000
+                elevAngle: 5.0
+                operational: true
+
+              - groundId: 1
+                latitude: -72.010000
+                longitude: 2.320000
+                elevAngle: 5.0
+                operational: true
+
+              - groundId: 2
+                latitude: -72.010000
+                longitude: 2.320000
+                elevAngle: 5.0
+                operational: true
+
+              - groundId: 3
+                latitude: 69.650000
+                longitude: 18.960000
+                elevAngle: 5.0
+                operational: true
+
+              - groundId: 4
+                latitude: 70.367800
+                longitude: 31.125100
+                elevAngle: 5.0
+                operational: true
+
+              - groundId: 5
+                latitude: 70.367800
+                longitude: 31.125100
+                elevAngle: 5.0
+                operational: true
+
+              - groundId: 6
+                latitude: -53.000000
+                longitude: -71.000000
+                elevAngle: 5.0
+                operational: true
+
+              - groundId: 7
+                latitude: 68.400000
+                longitude: -133.500000
+                elevAngle: 5.0
+                operational: true
+
+              - groundId: 8
+                latitude: 1.350000
+                longitude: 103.820000
+                elevAngle: 5.0
+                operational: true
+
+              - groundId: 9
+                latitude: 19.820000
+                longitude: -155.470000
+                elevAngle: 5.0
+                operational: true
+
+              - groundId: 10
+                latitude: 35.690000
+                longitude: 139.690000
+                elevAngle: 5.0
+                operational: true
+
+              - groundId: 11
+                latitude: -20.350000
+                longitude: 57.550000
+                elevAngle: 5.0
+                operational: true
+
+              - groundId: 12
+                latitude: 25.200000
+                longitude: 55.270000
+                elevAngle: 5.0
+                operational: true
+
+              - groundId: 13
+                latitude: 8.540000
+                longitude: -80.780000
+                elevAngle: 5.0
+                operational: true
+
+              - groundId: 14
+                latitude: -25.640000
+                longitude: 28.080000
+                elevAngle: 5.0
+                operational: true

@@ -207,7 +207,7 @@ class Constellation(Entity):
         self.min_elevations_fire = [
             compute_min_elevation(
                 wgs84.subpoint(satellite.at(satellite.epoch)).elevation.m,
-                config.rc.application_configuration["FIELD_OF_REGARD"][i],
+                config.rc.application_configuration["SATELLITES"][i]["field_of_regard"],
             )
             for i, satellite in enumerate(self.satellites)
         ]
@@ -252,7 +252,7 @@ class Constellation(Entity):
             then = self.ts.from_datetime(self.get_time() + time_step)
             self.min_elevations_fire[i] = compute_min_elevation(
                 float(self.next_positions[i].elevation.m),
-                config.rc.application_configuration["FIELD_OF_REGARD"][i],
+                config.rc.application_configuration["SATELLITES"][i]["field_of_regard"],
             )
             for j, fire in enumerate(self.fires):
                 if self.detect[j][self.names[i]] is None:
@@ -543,14 +543,11 @@ if __name__ == "__main__":
     activesats = load.tle_file(
         activesats_url, filename="examples/firesat/satellites/active.txt", reload=True
     )
-    norads = [
-        39634,
-        40697,
-        41335,
-        42063,
-        42969,
-        43437,
-    ]
+    norads = []
+    list_sats = config.rc.application_configuration["SATELLITES"]
+    for i in range(len(list_sats)):
+        norads.append(list_sats[i]["norad_id"])
+
     ES = []
     indices = []
     by_norad = {
