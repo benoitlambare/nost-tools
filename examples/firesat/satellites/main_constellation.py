@@ -543,14 +543,15 @@ if __name__ == "__main__":
     activesats = load.tle_file(
         activesats_url, filename="examples/firesat/satellites/active.txt", reload=True
     )
-    norads = [
-        39634,
-        40697,
-        41335,
-        42063,
-        42969,
-        43437,
-    ]
+
+    by_name = {sat.name: sat for sat in activesats}
+    norads = [39634, 40697, 41335, 42063, 42969, 43437, 62671, 40013, 59126]
+    # , 47510
+    # , 48917
+    #         59103,
+    #         59100,
+    #         60539,
+    #         62705,
     ES = []
     indices = []
     by_norad = {
