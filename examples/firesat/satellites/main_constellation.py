@@ -439,6 +439,10 @@ class PositionPublisher(WallclockTimeIntervalPublisher):
             self.isInRange[i], groundId = check_in_range(
                 next_time, satellite, constellation.grounds
             )
+            # print(
+            #     f"[DEBUG] lat={subpoint.latitude.degrees}, lon={subpoint.longitude.degrees}"
+            # )
+
             self.app.send_message(
                 self.app.app_name,
                 "location",
@@ -545,13 +549,24 @@ if __name__ == "__main__":
     )
 
     by_name = {sat.name: sat for sat in activesats}
-    norads = [39634, 40697, 41335, 42063, 42969, 43437, 62671, 40013, 59126]
-    # , 47510
-    # , 48917
-    #         59103,
-    #         59100,
-    #         60539,
-    #         62705,
+    norads = [
+        39634,
+        40697,
+        41335,
+        42063,
+        42969,
+        43437,
+        62671,
+        40013,
+        59126,
+        47510,
+        48917,
+        59103,
+        59100,
+        60539,
+        62705,
+    ]
+
     ES = []
     indices = []
     by_norad = {
