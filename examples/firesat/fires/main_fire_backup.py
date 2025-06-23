@@ -146,7 +146,7 @@ if __name__ == "__main__":
     app = ManagedApplication("fire")
 
     # import csv file from fire_scenarios subdirectory with scenario defining locations and ignition datetimes of fires
-    csvFile = importlib.resources.open_text("fire_scenarios", "fireAOI.csv")
+    csvFile = importlib.resources.open_text("fire_scenarios", "first5days.csv")
 
     # Read the csv file and convert to a DataFrame with initial column defining the index
     df = pd.read_csv(csvFile, index_col=0)

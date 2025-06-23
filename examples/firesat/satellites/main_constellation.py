@@ -448,7 +448,7 @@ class PositionPublisher(WallclockTimeIntervalPublisher):
                 "location",
                 SatelliteStatus(
                     id=i,
-                    name=satellite.name,
+                    noradId=satellite.model.satnum,
                     latitude=subpoint.latitude.degrees,
                     longitude=subpoint.longitude.degrees,
                     altitude=subpoint.elevation.m,

@@ -81,7 +81,7 @@ class SatelliteStatus(BaseModel):
     """
 
     id: int = Field(..., description="Unique satellite identifier")
-    name: str = Field(..., description="Satellite name for labeling.")
+    noradId: int = Field(..., description="Satellite name for labeling.")
     latitude: float = Field(
         ..., ge=-90, le=90, description="Latitude (deg) of satellite subpoint location."
     )
