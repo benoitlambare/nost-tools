@@ -2,12 +2,10 @@ import asyncio
 import json
 from dotenv import dotenv_values
 import aio_pika
-
 from transform_in_geoJSON import convert_location_to_geojson, append_feature_to_file
 
 detected_by = None
 detected_time = None
-features = []
 
 
 async def handle_message(message: aio_pika.IncomingMessage):
@@ -37,8 +35,7 @@ async def handle_message(message: aio_pika.IncomingMessage):
 
                 # Convertir et stocker le feature
                 feature = convert_location_to_geojson(payload)
-                features.append(feature)
-                append_feature_to_file(features)
+                append_feature_to_file(feature)
 
                 # Reset after match
                 detected_by = None

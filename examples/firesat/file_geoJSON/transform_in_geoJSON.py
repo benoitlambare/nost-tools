@@ -48,8 +48,7 @@ def convert_location_to_geojson(location_message):
         },
     )
 
-    feature_collection = FeatureCollection([feature], name="Constellation")
-    return feature_collection
+    return feature
 
 
 def append_feature_to_file(new_feature, filepath="data.geojson"):
