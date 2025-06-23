@@ -18,14 +18,14 @@ execution:
   application:
     shut_down_when_terminated: True
   manager:
-    sim_start_time: "2020-01-01T07:20:00+00:00"
-    sim_stop_time: "2020-01-01T10:20:00+00:00"
+    sim_start_time: "2025-06-03T21:10:00+00:00"
+    sim_stop_time: "2025-06-03T23:10:00+00:00"
     start_time:
     time_step: "0:00:01"
     time_scale_factor: 60
     time_status_step: "0:00:01"
     is_scenario_time_status_step: False
-    time_status_init: "2020-01-01T07:21:00+00:00"
+    time_status_init: "2025-06-03T21:11:00+00:00"
     command_lead: "0:00:05"
     required_apps:
       - manager
@@ -38,9 +38,9 @@ execution:
     shut_down_when_terminated: True
     time_scale_updates:
       - time_scale_factor: 120.0
-        sim_update_time: "2020-01-01T08:20:00+00:00"
+        sim_update_time: "2025-06-03T22:10:00+00:00"
       - time_scale_factor: 60.0
-        sim_update_time: "2020-01-01T09:20:00+00:00"
+        sim_update_time: "2025-06-03T23:00:00+00:00"
   managed_applications:
     fire:
       time_scale_factor: 60
@@ -49,7 +49,7 @@ execution:
       set_offset: True
       time_status_step: "0:00:10"
       is_scenario_time_status_step: False
-      time_status_init: "2020-01-01T07:20:00+00:00"
+      time_status_init: "2025-06-03T21:10:00+00:00"
       shut_down_when_terminated: True
       manager_app_name: "manager"
     constellation:
@@ -59,7 +59,7 @@ execution:
       set_offset: True
       time_status_step: "0:00:10"
       is_scenario_time_status_step: False
-      time_status_init: "2020-01-01T07:20:00+00:00"
+      time_status_init: "2025-06-03T21:10:00+00:00"
       shut_down_when_terminated: True
       manager_app_name: "manager"
       configuration_parameters:

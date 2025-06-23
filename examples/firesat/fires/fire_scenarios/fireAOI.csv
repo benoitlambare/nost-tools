@@ -1,0 +1,2 @@
+,latitude,longitude,bright_ti4,scan,track,acq_date,acq_time,satellite,instrument,confidence,version,bright_ti5,frp,daynight,type,id,start_time,geometry
+38,48.420078,-118.035973,305.96,0.62,0.54,1/1/2020,908,N,VIIRS,n,1,273.84,2.8,N,0,68,1/1/2020 9:08,POINT (-13139704.40964859 5390098.427130588)

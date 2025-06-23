@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-    *This application demonstrates a simulation of a schedule of fires given geospatial locations and specified datetimes (at one minute resolution)*
+*This application demonstrates a simulation of a schedule of fires given geospatial locations and specified datetimes (at one minute resolution)*
 
-    The application contains a single :obj:`Environment` class which listens to the time status published by the manager application and publishes fire information at the specified ignition :obj:`datetime`. The application also contains callback messages that updates :obj:`datetime` in the fires :obj:`DataFrame` for each of ignition (including latitude-longitude :obj:`GeographicPosition`), detection, and reporting.
+The application contains a single :obj:`Environment` class which listens to the time status published by the manager application and publishes fire information at the specified ignition :obj:`datetime`. The application also contains callback messages that updates :obj:`datetime` in the fires :obj:`DataFrame` for each of ignition (including latitude-longitude :obj:`GeographicPosition`), detection, and reporting.
 
 """
 
@@ -23,6 +23,7 @@ from fire_config_files.schemas import FireState, FireStarted, FireDetected, Fire
 from fire_config_files.config import PREFIX, SCALE
 
 logging.basicConfig(level=logging.INFO)
+
 
 # define an observer to manage fire updates and record to a dataframe fires
 class Environment(Observer):
@@ -97,16 +98,17 @@ def on_fire(channel, method, properties, body):
         if isinstance(observer, Environment):
             app.simulator._observers[index].on_fire(channel, method, body)
 
+
 def on_detected(channel, method, properties, body):
     for index, observer in enumerate(app.simulator._observers):
         if isinstance(observer, Environment):
             app.simulator._observers[index].on_detected(channel, method, body)
 
+
 def on_reported(channel, method, properties, body):
     for index, observer in enumerate(app.simulator._observers):
         if isinstance(observer, Environment):
             app.simulator._observers[index].on_reported(channel, method, body)
-
 
 
 # name guard used to ensure script only executes if it is run as the __main__
@@ -126,7 +128,7 @@ if __name__ == "__main__":
     CLIENT_ID = credentials["CLIENT_ID"]
     CLIENT_SECRET_KEY = credentials["CLIENT_SECRET_KEY"]
     VIRTUAL_HOST = credentials["VIRTUAL_HOST"]
-    IS_TLS = credentials["IS_TLS"].lower() == 'true'  # Convert to boolean
+    IS_TLS = credentials["IS_TLS"].lower() == "true"  # Convert to boolean
 
     # Set the client credentials from the config file
     config = ConnectionConfig(
@@ -137,13 +139,14 @@ if __name__ == "__main__":
         CLIENT_ID,
         CLIENT_SECRET_KEY,
         VIRTUAL_HOST,
-        IS_TLS)
-    
+        IS_TLS,
+    )
+
     # create the managed application
     app = ManagedApplication("fire")
 
     # import csv file from fire_scenarios subdirectory with scenario defining locations and ignition datetimes of fires
-    csvFile = importlib.resources.open_text("fire_scenarios", "first5days.csv")
+    csvFile = importlib.resources.open_text("fire_scenarios", "fireAOI.csv")
 
     # Read the csv file and convert to a DataFrame with initial column defining the index
     df = pd.read_csv(csvFile, index_col=0)
@@ -179,9 +182,9 @@ if __name__ == "__main__":
         time_status_init=datetime(2020, 1, 1, 7, 20, tzinfo=timezone.utc),
         time_step=timedelta(seconds=1) * SCALE,
     )
-    
+
     app.ready()
-    
+
     # add message callbacks for fire ignition, detection, and report
     app.add_message_callback("fire", "location", on_fire)
     app.add_message_callback("constellation", "detected", on_detected)
@@ -190,4 +193,4 @@ if __name__ == "__main__":
     app.channel.start_consuming()
 
     # while True:
-        # pass
+    # pass

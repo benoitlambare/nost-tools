@@ -51,7 +51,7 @@ class FireDetected(BaseModel):
 
     fireId: int = Field(..., description="Unique fire identifier.")
     detected: datetime = Field(..., description="Time fire detected.")
-    detected_by: str = Field(..., description="Satellite name that detected the fire.")
+    detected_by: int = Field(..., description="Satellite name that detected the fire.")
 
 
 class FireReported(BaseModel):
@@ -64,7 +64,7 @@ class FireReported(BaseModel):
 
     fireId: int = Field(..., description="Unique fire identifier.")
     reported: datetime = Field(..., description="Time fire reported.")
-    reported_by: str = Field(
+    reported_by: int = Field(
         ..., description="Satellite name that sent the fire report."
     )
     reported_to: int = Field(

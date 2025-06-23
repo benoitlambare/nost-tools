@@ -548,7 +548,6 @@ if __name__ == "__main__":
         activesats_url, filename="examples/firesat/satellites/active.txt", reload=True
     )
 
-    by_name = {sat.name: sat for sat in activesats}
     norads = [
         39634,
         40697,
@@ -559,12 +558,12 @@ if __name__ == "__main__":
         62671,
         40013,
         59126,
-        47510,
-        48917,
-        59103,
-        59100,
-        60539,
-        62705,
+        # 47510,
+        # 48917,
+        # 59103,
+        # 59100,
+        # 60539,
+        # 62705,
     ]
 
     ES = []
@@ -572,6 +571,7 @@ if __name__ == "__main__":
     by_norad = {
         sat.model.satnum: sat for sat in activesats if sat.model.satnum in norads
     }
+
     for name_i, norad in enumerate(norads):
         ES.append(by_norad[norad])
         indices.append(name_i)
