@@ -31,7 +31,7 @@ execution:
       - manager
       - fire
       - constellation
-      - ground
+      # - ground
     init_retry_delay_s: 5
     init_max_retry: 5
     set_offset: True
@@ -74,12 +74,12 @@ execution:
           - 105
           - 105
           - 105
-          # - 105
-          # - 105
-          # - 105
-          # - 105
-          # - 105
-          # - 105
+          - 105
+          - 105
+          - 105
+          - 105
+          - 105
+          - 105
     ground:
       time_scale_factor: 60
       time_step: "0:00:01"

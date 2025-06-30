@@ -19,7 +19,7 @@ logging.basicConfig(level=logging.INFO)
 
 if __name__ == "__main__":
     # Load config
-    config = ConnectionConfig(yaml_file="examples/firesat/firesat.yaml")
+    config = ConnectionConfig(yaml_file="examples/firesat/firesat2025.yaml")
 
     # Create the manager application
     manager = Manager()

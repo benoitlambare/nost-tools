@@ -350,7 +350,7 @@
                     payload.latitude
                 ),
                 pixelSize: 8,
-                color: Cesium.Color.RED,
+                color: Cesium.Color.AQUAMARINE,
                 show: true,
                 willReadFrequently: true
             });
@@ -363,7 +363,7 @@
          */
         function handleFireDetectionMessage(payload, entities) {
             // Update fire color to indicate detection
-            entities.fires.get(payload.fireId).color = Cesium.Color.DARKORANGE;
+            entities.fires.get(payload.fireId).color = Cesium.Color.DARKTURQUOISE
         }
 
         /**
@@ -373,7 +373,7 @@
          */
         function handleFireReportMessage(payload, entities) {
             // Update fire color to indicate reporting
-            entities.fires.get(payload.fireId).color = Cesium.Color.YELLOW;
+            entities.fires.get(payload.fireId).color = Cesium.Color.AQUA;
         }
 
         /**

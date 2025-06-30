@@ -535,7 +535,9 @@ if __name__ == "__main__":
     NAME = "constellation"
 
     # Load config
-    config = ConnectionConfig(yaml_file="examples/firesat/firesat.yaml", app_name=NAME)
+    config = ConnectionConfig(
+        yaml_file="examples/firesat/firesat2025.yaml", app_name=NAME
+    )
 
     # Create the managed application
     app = ManagedApplication(app_name=NAME)
@@ -558,8 +560,8 @@ if __name__ == "__main__":
         62671,
         40013,
         59126,
-        # 47510,
-        # 48917,
+        47510,
+        48917,
         # 59103,
         # 59100,
         # 60539,
