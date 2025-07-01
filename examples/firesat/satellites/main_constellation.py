@@ -255,18 +255,18 @@ class Constellation(Entity):
                 config.rc.application_configuration["FIELD_OF_REGARD"][i],
             )
             for j, fire in enumerate(self.fires):
-                if self.detect[j][self.names[i]] is None:
-                    topos = wgs84.latlon(fire["latitude"], fire["longitude"])
-                    isInView = check_in_view(
-                        then, satellite, topos, self.min_elevations_fire[i]
-                    )
-                    if isInView:
-                        self.detect[j][self.names[i]] = (
-                            self.get_time() + time_step
-                        )  # TODO could use event times
-                        if self.detect[j]["firstDetector"] is None:
-                            self.detect[j]["firstDetect"] = True
-                            self.detect[j]["firstDetector"] = self.names[i]
+                # if self.detect[j][self.names[i]] is None:
+                topos = wgs84.latlon(fire["latitude"], fire["longitude"])
+                isInView = check_in_view(
+                    then, satellite, topos, self.min_elevations_fire[i]
+                )
+                if isInView:
+                    self.detect[j][self.names[i]] = (
+                        self.get_time() + time_step
+                    )  # TODO could use event times
+                    if self.detect[j]["firstDetector"] is None:
+                        self.detect[j]["firstDetect"] = True
+                        self.detect[j]["firstDetector"] = self.names[i]
                 if (self.detect[j][self.names[i]] is not None) and (
                     self.report[j][self.names[i]] is None
                 ):
@@ -296,7 +296,7 @@ class Constellation(Entity):
                         "detected_by": detector,
                     },
                 )
-                self.detect[i]["firstDetect"] = False
+                # self.detect[i]["firstDetect"] = False
         for i, newly_reported_fire in enumerate(self.report):
             if newly_reported_fire["firstReport"]:
                 reporter = newly_reported_fire["firstReporter"]

@@ -18,8 +18,8 @@ async def handle_message(message: aio_pika.IncomingMessage):
         if topic == "greenfield.constellation.detected":
             detected_by = payload.get("detected_by")
             detected_time = payload.get("detected")
-            print(f"✅ Detected fire by NORAD ID {detected_by} at {detected_time}")
-            print(json.dumps(payload, indent=2))
+            # print(f"✅ Detected fire by NORAD ID {detected_by} at {detected_time}")
+            # print(json.dumps(payload, indent=2))
 
         elif (
             topic == "greenfield.constellation.location"
