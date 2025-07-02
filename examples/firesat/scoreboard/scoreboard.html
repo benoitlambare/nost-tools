@@ -353,6 +353,21 @@
                 color: Cesium.Color.AQUAMARINE,
                 show: true,
                 willReadFrequently: true
+
+            });
+            entities.fires.add({
+                polygon: {
+                    hierarchy: Cesium.Cartesian3.fromDegreesArray([
+                        longitude - delta, latitude - delta, // bas gauche
+                        longitude + delta, latitude - delta, // bas droite
+                        longitude + delta, latitude + delta, // haut droite
+                        longitude - delta, latitude + delta, // haut gauche
+                    ]),
+                    material: Cesium.Color.RED.withAlpha(0.5),
+                    height: 1000,
+                    outline: true,
+                    outlineColor: Cesium.Color.BLACK,
+                },
             });
         }
 

@@ -544,11 +544,18 @@ if __name__ == "__main__":
     app = ManagedApplication(app_name=NAME)
 
     # Load current TLEs for active satellites from Celestrak
-    activesats_url = (
-        "https://celestrak.org/NORAD/elements/gp.php?GROUP=active&FORMAT=tle"
-    )
+    # activesats_url = (
+    #     "https://celestrak.org/NORAD/elements/gp.php?GROUP=active&FORMAT=tle"
+    # )
+    # activesats = load.tle_file(
+    #     activesats_url, filename="examples/firesat/satellites/active.txt", reload=True
+    # )
+
+    # To avoid 403 -> exceeding Celestrak's rate limit, we can load a local file instead
     activesats = load.tle_file(
-        activesats_url, filename="examples/firesat/satellites/active.txt", reload=True
+        "examples/firesat/satellites/active.txt",
+        filename="examples/firesat/satellites/active.txt",
+        reload=True,
     )
 
     norads = [
@@ -567,6 +574,10 @@ if __name__ == "__main__":
         # 59100,
         # 60539,
         # 62705,
+        # 27424,
+        # 25994,
+        # 37849,
+        # 43013
     ]
 
     ES = []
